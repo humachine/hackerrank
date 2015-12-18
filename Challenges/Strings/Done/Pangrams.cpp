@@ -5,12 +5,27 @@ using namespace std;
 int main(void)
 {
     int i, j, k;
-    char a[110];
-    cin>>a;
+    char a[1000];
+    cin.getline(a, 1000, '\n');
 
     int ans[26]={0};
     for(i=0;i<strlen(a);i++)
-        cout<<toupper(a[i]);
+    {
+        if(a[i]==' ')
+            continue;
+        ans[toupper(a[i])-65]++;
+    }
+    k=0;
+    for(i=0;i<26;i++)
+        if(ans[i] == 0){
+            k=1;
+            break;
+        }
+    if(k==1)
+        cout<<"not pangram\n";
+    else
+        cout<<"pangram\n";
+
     return 0;
 
 }
