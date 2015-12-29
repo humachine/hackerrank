@@ -15,28 +15,43 @@ int main()
     l2=strlen(b);
 
     i=j=0;
-    cout<<fn(0, 0);
+    if(a[0]==b[0])
+        res[0][0]=1;
+    else
+        res[0][0]=0;
+
+    for(i=1;i<l1;i++){
+        if(a[i]==b[0])
+            res[i][0]=1;
+        else
+            res[i][0]=max(res[i-1][0], 0);
+    }
+
+    for(j=1;j<l2;j++){
+        if(a[0]==b[j])
+            res[0][j]=1;
+        else
+            res[0][j]=max(res[0][j-1], 0);
+    }
+
+
+
+    for(i=1;i<l1;i++)
+    {
+        for(j=1;j<l2;j++){
+            if(a[i]==b[j])
+                res[i][j]=res[i-1][j-1]+1;
+            else
+                res[i][j]=max(res[i-1][j], res[i][j-1]);
+        }
+    }
+
+
+    cout<<res[l1-1][l2-1];
 
 
     return 0;
 }
-int fn(int i, int j)
-{
-    if(i>=l1 || j>=l2)
-        return 0;
-    if(res[i][j]>0)
-        return res[i][j];
-    if(a[i]==b[j]){
-        res[i][j]=(1+fn(i+1, j+1));
-      //  cout<<i<<' '<<j<<' '<<res[i][j]<<endl;
-        return res[i][j];
-    }
-    res[i][j]=max(fn(i, j+1), fn(i+1, j));
-    //cout<<i<<' '<<j<<' '<<res[i][j]<<endl;
-    return res[i][j];
-}
-//  ABCD            ABCD
-//  ABDC            BXACD
 
 /*
  *
