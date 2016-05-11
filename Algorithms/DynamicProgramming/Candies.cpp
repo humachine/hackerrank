@@ -1,5 +1,6 @@
 //https://www.hackerrank.com/challenges/candies
 //
+//
 
 #include<algorithm>
 #include<iostream>
@@ -15,4 +16,8 @@ int main()
         cin>>ratings[i];
     }
     return 0;
+}
+
+int minCandies(int *arr, int prev, int student, int N){
+    if(student
 }
