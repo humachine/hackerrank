@@ -5,7 +5,7 @@
 #include<algorithm>
 #include<iostream>
 using namespace std;
-int minCandies(int *arr, int N);
+
 int main()
 {
     int ratings[10000];
@@ -19,5 +19,4 @@ int main()
 }
 
 int minCandies(int *arr, int prev, int student, int N){
-    if(student
 }
